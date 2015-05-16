@@ -16,7 +16,9 @@
 
 # Local settings
 /config/settings.yml
+/config/localization.yml
 
 # Misc
 .DS_Store
 .rvmrc
+Gemfile.lock
