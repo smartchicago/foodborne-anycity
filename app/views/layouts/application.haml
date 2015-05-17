@@ -2,16 +2,17 @@
 %html
   %head
     %title
-      Foodborne Chicago - #{content_for?(:page_title) ? yield(:page_title) : "Report incidents of food poisoning in Chicago"}
+      #{L10N["APP_NAME"]} - #{content_for?(:page_title) ? yield(:page_title) : "Report incidents of food poisoning in #{L10N['CITY']}" }
     %meta{ :charset => 'utf-8' }
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
-    %meta{ :name => "twitter:card", :content => "summary" }
-    %meta{ :name => "twitter:site", :content => "@foodbornechi" }
-    %meta{ :name => "twitter:creator", :content => "@foodbornechi" }
-    %meta{ :name => "twitter:title", :content => "Foodborne Chicago" }
-    %meta{ :name => "twitter:url", :content => "https://www.foodbornechicago.org" }
-    %meta{ :name => "twitter:description", :content => "If you think you have food poisoning in Chicago, please complete this form. The info will be sent through the Chicago 311 service to the Chicago Department of Public Health so they can take any necessary action including sending a food inspector to that restaurant." }
-    %meta{ :name => "twitter:image", :content => image_url('logo_twitter.png') }
+    -if L10N["TWITTER_ENABLED"] == true
+      %meta{ :name => "twitter:card", :content => "summary" }
+      %meta{ :name => "twitter:site", :content => "#{L10N["TWITTER_HANDLE"]}" }
+      %meta{ :name => "twitter:creator", :content => "#{L10N["TWITTER_HANDLE"]}" }
+      %meta{ :name => "twitter:title", :content => "#{L10N["APP_NAME"]}" }
+      %meta{ :name => "twitter:url", :content => "#{L10N["SITE_URL"]}" }
+      %meta{ :name => "twitter:description", :content => "#{L10N["TWITTER_DESCRIPTION"]}" }
+      %meta{ :name => "twitter:image", :content => image_url('logo_twitter.png') }
     = stylesheet_link_tag "//fonts.googleapis.com/css?family=Open+Sans:400italic,400,700|Open+Sans+Condensed:700", :media => "all"
     = stylesheet_link_tag "application", :media => "all"
     /[if lt IE 9]
@@ -28,25 +29,26 @@
               %li= link_to "Q&A", page_path("questions-answers")
               %li= link_to "Press", page_path("press")
               %li= link_to "Blog", "https://foodbornechicago.wordpress.com/"
-              %li
-                %a.twitter-follow-button{"data-show-count" => "false", :href => "https://twitter.com/foodbornechi"} Follow @foodbornechi
+              -if L10N["TWITTER_ENABLED"] == true
+                %li
+                  %a.twitter-follow-button{"data-show-count" => "false", :href => "#{L10N['TWITTER_URL']}"} Follow #{L10N['TWITTER_HANDLE']}
       .container
         .span12
           %p.logo-wrap
-            %a.logo{:href => "/"} 
-              = image_tag "logo.png", :width => 70
-              Foodborne Chicago
-          %p.subheader 
+            %a.logo{:href => "/"}
+              = image_tag "#{L10N['LOGO']}", :width => 70
+              #{L10N["APP_NAME"]}
+          %p.subheader
             Report food poisoning
-            %span to the Chicago Department of Public Health
+            %span to the #{L10N["AGENCY"]}
           %p
-            A project of  
-            %a.scc{:href => "http://www.smartchicagocollaborative.org/", title: "Smart Chicago Collaborative"}
-              = image_tag "scc_logo.png", :alt => "Smart Chicago Collaborative logo"
+            A project of
+            %a.scc{:href => "#{L10N['PARTNER_WEBSITE']}", title: "#{L10N['PARTNER_ORG']}" }
+              = image_tag "#{L10N['PARTNER_LOGO']}", :alt => "#{L10N['PARTNER_LOGO_ALT']}"
             and
-            %a.scc{:href => "http://www.cityofchicago.org/city/en/depts/cdph.html", title: "Chicago Department of Public Health"}
-              = image_tag "cdph.png", :alt => "Chicago Department of Public Health logo"
-              
+            %a.scc{:href => "#{L10N['AGENCY_WEBSITE']}", title: "#{L10N['AGENCY']}"}
+              = image_tag "#{L10N['AGENCY_LOGO']}", :alt => "#{L10N['AGENCY_LOGO_ALT']}"
+
     = yield
     %script{ :type => 'text/javascript', :src => '//maps.googleapis.com/maps/api/js?sensor=false&libraries=places' }
     = javascript_include_tag "application"
@@ -55,7 +57,7 @@
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', '#{SETTINGS["GOOGLE_ANALYTICS"]}']);
         _gaq.push(['_trackPageview']);
-       
+
         (function() {
           var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
           ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';

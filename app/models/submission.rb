@@ -18,7 +18,7 @@ class Submission < ActiveRecord::Base
     # Create an Open311 service request
     def create_service_request
       # Geocode the address
-      lat, long = Geocoder.coordinates("#{self.restaurant_address} , Chicago, IL") 
+      lat, long = Geocoder.coordinates("#{self.restaurant_address} , #{L10N['CITY']}, #{L10N['STATE_ABBREV']}") 
 
       HTTParty.post('http://311api.cityofchicago.org/open311/v2/requests.json', :body => { 
         :api_key => SETTINGS["OPEN_311_KEY"],

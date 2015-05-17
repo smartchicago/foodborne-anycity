@@ -2,28 +2,25 @@
   #submission.row
     .span5
       .copy
-        %p If you think you have food poisoning in Chicago, please complete this form. The info will be sent to the Chicago Department of Public Health so they can take any necessary action.
-
+        %p If you think you have food poisoning in #{L10N["CITY"]}, please complete this form. The info will be sent to the #{L10N["AGENCY"]} so they can take any necessary action.
         %p Here’s more information about what happens next:
 
         %ol.steps
-          %li We will use the City’s Open311 system to directly submit your information. #{link_to "Here’s more info on the 311 process.", "http://www.cityofchicago.org/content/dam/city/depts/311/general/NewOpen311InformationChart.pdf"}
-
-          %li You will then get an e-mail from #{link_to "CityServices@cityofchicago.org", "mailto: ityServices@cityofchicago.org"} letting you know that the information was received as well as a link to the #{link_to "City’s 311 Service Tracker tool", "http://servicetracker.cityofchicago.org/"}.
-
-          %li There will also be a link in this email (#{link_to "example", "http://servicetracker.cityofchicago.org/requests/13-00210540"}) that goes directly to the City’s Service Tracker website. This is your key to finding out what comes of the service request. If you didn’t get the email, check your Spam folder. Otherwise, contact 311 with questions.
+          %li #{L10N["STEP1"]}
+          %li #{L10N["STEP2"]}
+          %li #{L10N["STEP3"]}
 
         %p Did we @reply you on Twitter? Here’s why.
 
         %p 
-          We use computers & code to search Twitter for tweets related to food poisoning in Chicago. We do as much as we can to automatically zero-in on the tweets we think are really about a possible food poisoning case and really coming from Chicago. Then real humans review the tweets and @reply back to people with a link back to this page. #{link_to "More detail here.", page_path("about")}
+          We use computers & code to search Twitter for tweets related to food poisoning in #{L10N["CITY"]}. We do as much as we can to automatically zero-in on the tweets we think are really about a possible food poisoning case and really coming from #{L10N["CITY"]}. Then real humans review the tweets and @reply back to people with a link back to this page. #{link_to "More detail here.", page_path("about")}
           
         %p
           = link_to "Questions? We’ve got answers.", page_path("questions-answers")
 
         %ul.logos.group
-          %li.city= image_tag('city_seal.png', alt: "City of Chicago Seal")
-          %li.cdph= image_tag('cdph.png', alt: "Chicago Department of Public Health logo")
+          %li.city= image_tag("#{L10N['CITY_SEAL']}", alt: "#{L10N['CITY_SEAL_ALT']}")
+          %li.cdph= image_tag("#{L10N['AGENCY_LOGO']}", alt: "#{L10N['AGENCY_LOGO_ALT']}")
 
     .span7
       .well
@@ -33,28 +30,26 @@
             .alert.alert-error
               %strong  Error:
               Please fill out all of the required fields below.
-          %p
-            Please be as descriptive as possible, letting us know what food items you consumed, what time of day, what was your first symptom, and for how long you were sick.
+          %p #{L10N["WHAT_HAPPENED_DESCRIPTION"]}
           %br
-          = s.input :restaurant_name, :label => "What restaurant was it?", :input_html => { :class => "input-xlarge", :placeholder => "e.g.  Pete's Fish Shack" }
-          = s.input :restaurant_address, :label => "What was its address?", :input_html => { :class => "input-xlarge", :placeholder => "e.g.  70 E Lake St, Chicago, IL",  :"data-geo" => 'formatted_address' }
+          = s.input :restaurant_name, :label => "What restaurant was it?", :input_html => { :class => "input-xlarge", :placeholder => "e.g.  #{L10N['SAMPLE_RESTAURANT']}" }
+          = s.input :restaurant_address, :label => "What was its address?", :input_html => { :class => "input-xlarge", :placeholder => "e.g.  #{L10N['SAMPLE_ADDRESS']}",  :"data-geo" => 'formatted_address' }
           .map_canvas
-          = s.input :description, :label => "What happened?", :as => :text, :input_html => { :rows => 6, :class => "input-xlarge", :placeholder => "e.g.  I ate 2 chicken breasts from Restaurant Name around 7pm, and had diarrhea/vomiting at 2am. I felt terrible for the next 24 hours." }
+          = s.input :description, :label => "What happened?", :as => :text, :input_html => { :rows => 6, :class => "input-xlarge", :placeholder => "e.g. #{L10N['SAMPLE_WHAT_HAPPENED']}" }
           = s.input :date, :as => :string, :label => "When did it happen?", :input_html => { :class => "datepicker" }
           %br
-          %h3 How can the Chicago Department of Public Health reach you?
-          %p 
-            We use the City's Open311 system to directly submit your information to make a request about your food poisoning incident. The Chicago Department of Public Health requires some info for a possible follow-up.
+          %h3 How can the #{L10N["AGENCY"]} reach you?
+          %p #{L10N["HOW_CAN_WE_REACH_YOU_DESCRIPTION"]}
           %br
-          = s.input :first_name, :input_html => { :placeholder => "Joe" }
-          = s.input :last_name, :input_html => { :placeholder => "Citizen" }
-          = s.input :email, :input_html => { :placeholder => "joecitizen@example.com" }
-          = s.input :phone, :input_html => { :placeholder => "773-555-1212" }
+          = s.input :first_name, :input_html => { :placeholder => "#{L10N['SAMPLE_FIRST_NAME']}" }
+          = s.input :last_name, :input_html => { :placeholder => "#{L10N['SAMPLE_LAST_NAME']}" }
+          = s.input :email, :input_html => { :placeholder => "#{L10N['SAMPLE_EMAIL']}" }
+          = s.input :phone, :input_html => { :placeholder => "#{L10N['SAMPLE_PHONE']}" }
           = s.input :tweet_id, :as => :hidden, :value => @tweet_id
           %br
           %p.privacy
             Questions about privacy?
-            = link_to "Read our policy.", page_path('privacy'), alt: "Foodborne Chicago's Privacy Policy", target: "_blank"
+            = link_to "Read our policy.", page_path('privacy'), alt: "#{L10N['APP_NAME']}s Privacy Policy", target: "_blank"
           %button.btn.btn-success.btn-large{ :class => "ga-trackable", :data => { 'tracking-category' => 'Submission', 'tracking-action' => 'Create', 'tracking-label' => 'Public Submission' } }
             %i.icon-lock.icon-white 
             Submit your report
