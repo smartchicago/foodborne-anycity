@@ -1,2 +1,58 @@
-CITY = 'Chicago'
-LOGO_URL = ''
+# These variables are available within the application as L10N["CITY"] (L10 - localization)#
+
+# Application Variables
+APP_NAME: 'Foodborne Chicago'
+CITY : 'Chicago'
+STATE_ABBREV : 'IL'
+LOGO : 'logo.png'
+LOGO_ALT: 'Foodborne Logo'
+SITE_URL: 'https://www.foodbornechicago.org'
+
+# Should submissions be sent to a third party API?
+API_ENABLED: false
+API_POST_ENDPOINT: 'http://311api.cityofchicago.org/open311/v2/requests.json'
+API_KEY: 'xxxx'
+API_SERVICE_CODE: 'xxxx' 
+
+# What city agency is this affiliated with?
+AGENCY: 'Chicago Department of Public Health'
+AGENCY_WEBSITE: 'http://www.cityofchicago.org/city/en/depts/cdph.html'
+AGENCY_LOGO: 'cdph.png'
+AGENCY_LOGO_ALT: 'Department of Public Health'
+EMAIL: 'CityServices@cityofchicago.org' 
+
+# Partner Organization
+PARTNER_ORG: 'Smart Chicago Collaborative'
+PARTNER_WEBSITE: 'http://www.smartchicagocollaborative.org/'
+PARTNER_LOGO: 'scc_logo.png'
+PARTNER_LOGO_ALT: 'SmartChicago Logo'
+
+#How it works (HTML OK)
+STEP1: 'We will use the City’s Open311 system to directly submit your information.'
+STEP2: 'You will then get an e-mail from CityServices@cityofchicago.org letting you know that the information was received as well as a link to the City’s 311 Service Tracker tool.'
+STEP3: 'There will also be a link in this email that goes directly to the City’s Service Tracker website. This is your key to finding out what comes of the service request. If you didn’t get the email, check your Spam folder. Otherwise, contact 311 with questions.'
+
+#Twitter
+TWITTER_ENABLED: false
+TWITTER_HANDLE: '@foodbornechi'
+TWITTER_DESCRIPTTION: 'If you think you have food poisoning in Chicago, please complete this form. The info will be sent through the Chicago 311 service to the Chicago Department of Public Health so they can take any necessary action including sending a food inspector to that restaurant.'
+TWIITER_URL: 'https://twitter.com/foodbornechi'
+TWIITER_LOGO_URL: 'logo_twitter.png'
+
+#Other Static Assets - Images live in assets/images
+CITY_SEAL: 'city_seal.png'
+CITY_SEAL_ALT: 'Chicago City Seal'
+CITY_HALL: 'cityhall.png'
+CITY_HALL_ALT: 'Chicago City Hall'
+
+#Form
+WHAT_HAPPENED_DESCRIPTION: "Please be as descriptive as possible, letting us know what food items you consumed, what time of day, what was your first symptom, and for how long you were sick."
+SAMPLE_RESTAURANT: "Pete's Fish Shack"
+SAMPLE_ADDRESS: "70 E Lake St Chicago, IL"
+SAMPLE_WHAT_HAPPENED: "I ate 2 chicken breasts from Restaurant Name around 7pm, and had diarrhea/vomiting at 2am. I felt terrible for the next 24 hours."
+SAMPLE_FIRST_NAME: 'Joe'
+SAMPLE_LAST_NAME: 'Citizen'
+SAMPLE_EMAIL: 'joecitizen@example.com'
+SAMPLE_PHONE: '773-555-1212'
+HOW_CAN_WE_REACH_YOU_DESCRIPTION: "We use the City's Open311 system to directly submit your information to make a request about your food poisoning incident. The Detroit Department of Public Health requires some info for a possible follow-up."
+
