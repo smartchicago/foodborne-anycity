@@ -10,7 +10,7 @@ For Chicago, FoodBorne uses several services, including [Chicago's Open 311](htt
 
 Once you have obtained the necessary keys and credentials, copy the contents of `config/settings.yml.example` into a new file named `config/settings.yml`, and fill in the necessary information.
 
-Next, to make Foodborne appropriate for your city, copy the contents of `config/localization.yml.example` into a new file named `config/localization.yml`, and fill in the necessary information. If your city has an API endpoint similar to Chicago's Open 311 API, fill that in here.
+Next, to make Foodborne appropriate for your city, copy the contents of `config/localization.yml.example` into a new file named `config/localization.yml`, and fill in the necessary information. If your city has an API endpoint similar to Chicago's Open 311 API, fill that in here. Afterwards, when committing to your own repository, you'll likely want to remove the listing of this file in `.gitignore`.
 
 
 ### Production

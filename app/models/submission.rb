@@ -23,7 +23,7 @@ class Submission < ActiveRecord::Base
   # Create an Open311 service request
   def create_service_request
     # Geocode the address
-    lat, long = Geocoder.coordinates("#{self.restaurant_address} , #{L10N['CITY']}, #{L10N['STATE_ABBREV']}") 
+    lat, long = Geocoder.coordinates("#{self.restaurant_address} , #{L10N['CITY']}, #{L10N['STATE_ABBREV']}")
     request_body =  {
       :api_key => L10N['API_KEY'],
       :service_code => L10N['API_SERVICE_CODE'],
@@ -34,8 +34,8 @@ class Submission < ActiveRecord::Base
     },
       :address_string => self.restaurant_address,
       :description => self.description,
-      :lat => lat, 
-      :long => long, 
+      :lat => lat,
+      :long => long,
       :first_name => self.first_name,
       :last_name => self.last_name,
       :email => self.email,
@@ -45,6 +45,7 @@ class Submission < ActiveRecord::Base
     if api_enabled?
       HTTParty.post(L10N['API_POST_ENDPOINT'], :body => request_body)
     else
+      #hookup an email service provider to send email
       puts request_body
     end
   end
